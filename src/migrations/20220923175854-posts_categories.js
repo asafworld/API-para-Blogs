@@ -23,6 +23,6 @@ module.exports = {
   },
 
   down: async (queryInterface, _Sequelize) => {
-    await queryInterface.dropTable('postCategories');
+    await queryInterface.dropTable('posts_categories');
   }
 };
