@@ -8,7 +8,6 @@ const loginService = async ({ email, password }) => {
         email, password,
       },
     });
-    console.log(login);
     if (login) {
       const token = generateToken(email);
       return {
