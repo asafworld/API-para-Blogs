@@ -6,9 +6,10 @@ const secret = process.env.JWT_SECRET || 'suaSenhaSecreta';
 
 const checkToken = async (req, res, next) => {
   const { authorization } = req.headers;
-  if (authorization === null) {
+  console.log(authorization);
+  if (authorization === undefined || authorization === '') {
     return res.status(401).json({
-      message: 'Token not foung',
+      message: 'Token not found',
     });
   }
   try {
