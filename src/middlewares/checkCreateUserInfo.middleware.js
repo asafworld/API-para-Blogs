@@ -1,13 +1,13 @@
-const Joi = require('joi');
+// const Joi = require('joi');
 
-const emailSchema = Joi.object({
-  email: Joi.string().email({
-    minDomainSegments: 2,
-    tlds: {
-      allow: ['com', 'net'],
-    },
-  }),
-});
+// const emailSchema = Joi.object({
+//   email: Joi.string().email({
+//     minDomainSegments: 2,
+//     tlds: {
+//       allow: ['com', 'net'],
+//     },
+//   }),
+// });
 
 // const validateName = (displayName, res) => {
 //   const nameArr = displayName.split('');
