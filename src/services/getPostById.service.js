@@ -1,16 +1,19 @@
 const { BlogPost, User, Category } = require('../models/index');
 
-const getPostsService = async () => {
-  const posts = await BlogPost.findAll({
+const getPostByIdService = async (id) => {
+  const post = await BlogPost.findOne({
+    where: {
+      id,
+    },
     include: [
       { model: User, as: 'user', attributes: { exclude: ['password'] } },
       { model: Category, as: 'categories', through: { attributes: [] } },
     ],
   });
-  if (posts) {
+  if (post) {
     return {
       success: true,
-      posts,
+      post,
     };
   }
   return {
@@ -18,4 +21,4 @@ const getPostsService = async () => {
   };
 };
 
-module.exports = getPostsService;
+module.exports = getPostByIdService;
