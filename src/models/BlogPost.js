@@ -26,12 +26,13 @@ const blogPostSchema = (sequelize, DataTypes) => {
       },
       updated: {
         type: DataTypes.DATE,
-        field: 'updated',
       }
     },
     {
-      timestamps: false,
+      timestamps: true,
       underscored: true,
+      createdAt: 'published',
+      updatedAt: 'updated',
     }
   );
   
