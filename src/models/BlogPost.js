@@ -1,6 +1,6 @@
 const blogPostSchema = (sequelize, DataTypes) => {
-  const BlogPosts = sequelize.define(
-    'BlogPosts',
+  const BlogPost = sequelize.define(
+    'BlogPost',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -14,34 +14,33 @@ const blogPostSchema = (sequelize, DataTypes) => {
       content: {
         type: DataTypes.STRING,
       },
-      user_id: {
+      userId: {
         type: DataTypes.INTEGER,
         foreignKey: true,
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
         allowNull: false,
       },
-      createdAt: {
+      published: {
         type: DataTypes.DATE,
-        field: 'published'
       },
-      updatedAt: {
+      updated: {
         type: DataTypes.DATE,
-        field: 'updated'
+        field: 'updated',
       }
     },
     {
-      timestamps: true,
+      timestamps: false,
       underscored: true,
     }
-  )
+  );
   
-  // BlogPosts.associate = (models) => {
-  //   BlogPosts.belongsTo(models.User,
-  //     { foreignKey: 'userId', as: 'users' });
-  // };
+  BlogPost.associate = (models) => {
+    BlogPost.belongsTo(models.User,
+      { foreignKey: 'userId', as: 'users' });
+  };
 
-  return BlogPosts;
+  return BlogPost;
 }
 
 module.exports = blogPostSchema;
